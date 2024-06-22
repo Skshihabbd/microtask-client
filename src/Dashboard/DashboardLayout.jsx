@@ -26,7 +26,7 @@ const DashboardLayout = () => {
       <div className="flex min-h-screen   w-full ">
         <div className=" md:w-1/4  bg-yellow-400">
           <ul className="space-y-4    ">
-            {alluser.role==='admin'&&  
+             { alluser.role==="admin"  &&  
             <>
               <li className="bg-black py-1 text-white rounded-xl hover:scale-105">
                 <NavLink to={"/dashboard/adminhome"}>Admin Home</NavLink>
@@ -39,7 +39,7 @@ const DashboardLayout = () => {
               </li>
             </> }
 {
-              (alluser.role==="task creator" ||alluser.role==="admin")  &&  
+               (alluser.role==="task creator" ||alluser.role==="admin")  &&  
             <>
               <li className="bg-black py-1 text-white rounded-xl hover:scale-105">
                 <NavLink to={"/dashboard/creatorhome"}>Creator Home</NavLink>
@@ -61,7 +61,7 @@ const DashboardLayout = () => {
             </> }
 
             {
-               ( alluser.role==='worker' || alluser.role==='admin')  &&
+                ( alluser.role==='worker' || alluser.role==='admin')  &&
               <>
                 <li className="bg-black py-1 text-white rounded-xl hover:scale-105">
                   <NavLink to={"/dashboard/workerhome"}>Worker Home</NavLink>

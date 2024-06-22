@@ -43,7 +43,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const updateUser = (name, image) => {
-    setLoader(false);
+   
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: image,
@@ -54,7 +54,7 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log("this is the current user info", currentUser);
 
-      setUsers(currentUser);
+      
 
       if (currentUser) {
         // get token and store client
@@ -62,16 +62,21 @@ const AuthProvider = ({ children }) => {
         axiosPublic.post("/jwt", userInfo).then((res) => {
           if (res.data.token) {
             localStorage.setItem("access-token", res.data.token);
+            setUsers(currentUser);
+            setLoader(false);
           }
         });
       } else {
         // TODO: remove token (if token stored in the client side: Local storage, caching, in memory)
         localStorage.removeItem("access-token");
+        
+        setUsers(null);
+        setLoader(false);
       }
-      setLoader(false);
+      
     });
     return () => {
-      return unSubscribe;
+       unSubscribe();
     };
   }, [axiosPublic]);
 

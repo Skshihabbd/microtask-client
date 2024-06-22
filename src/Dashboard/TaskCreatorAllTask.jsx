@@ -35,7 +35,7 @@ const TaskCreatorAllTask = ({ info, idx, fetchs }) => {
   console.log(user);
 
   const handleUserUpdate = async (id) => {
-    await fetch(`http://localhost:5000/taskcreators/${id}`)
+    await fetch(`https://server-side-nu-sooty.vercel.app/taskcreators/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data) {

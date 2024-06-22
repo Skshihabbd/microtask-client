@@ -49,17 +49,16 @@ const router = createBrowserRouter([
     children: [
       {
         path: "adminhome",
-        element: (
-         
-            <AdminHome></AdminHome>
-         
-        ),
+        element: <AdminHome></AdminHome>,
       },
       {
         path: "manageuser",
         element: (
           <PrivetRoute>
-           <AdminRouter> <ManageUsers></ManageUsers></AdminRouter>
+            <AdminRouter>
+             
+              <ManageUsers></ManageUsers>
+            </AdminRouter>
           </PrivetRoute>
         ),
       },
@@ -68,11 +67,9 @@ const router = createBrowserRouter([
         path: "managetask",
         element: (
           <PrivetRoute>
-           
-              <AdminRouter>
+            <AdminRouter>
               <Managetask></Managetask>
-              </AdminRouter>
-           
+            </AdminRouter>
           </PrivetRoute>
         ),
       },
@@ -116,7 +113,9 @@ const router = createBrowserRouter([
         path: "taskdetails/:id",
         element: <TaskDetails></TaskDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/taskcreatorsall/${params.id}`),
+          fetch(
+            `https://server-side-nu-sooty.vercel.app/taskcreatorsall/${params.id}`
+          ),
       },
       {
         path: "mysubmission",
@@ -134,7 +133,9 @@ const router = createBrowserRouter([
         path: "taskupdate/:id",
         element: <TaskcreatorUpdate></TaskcreatorUpdate>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/taskcreatorsall/${params.id}`),
+          fetch(
+            `https://server-side-nu-sooty.vercel.app/taskcreatorsall/${params.id}`
+          ),
       },
     ],
   },

@@ -12,13 +12,26 @@ const TaskcreatorRoute = ({ children }) => {
   const axiosPublic =useAxiosPublic()
   //   const  data= axiosPublic.get(`user?email=${users.email}`)
 
-  const { data: user = [], refetch } = useQuery({
+  const { data: user = {},isLoading } = useQuery({
     queryKey: ["user"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/user?email=${users.email}`);
       return res.data;
     },
   });
+
+  if(isLoading){
+
+    return(
+  
+      <div className="h-svh flex justify-center items-center w-full">
+       <span className="loading loading-bars loading-xs"></span>
+<span className="loading loading-bars loading-sm"></span>
+<span className="loading loading-bars loading-md"></span>
+<span className="loading loading-bars loading-lg"></span>
+      </div>
+  )
+  } 
 
   console.log(user.role);
 

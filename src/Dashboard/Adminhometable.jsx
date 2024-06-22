@@ -5,7 +5,9 @@ const Adminhometable = ({ info, idx, fetcher }) => {
   const axiosSecure = useAxiosSecure();
   const handledataget = async (email, id) => {
     // console.log(email,id)
-    await fetch(`http://localhost:5000/usercreatorhomes?email=${email}`)
+    await fetch(
+      `https://server-side-nu-sooty.vercel.app/usercreatorhomes?email=${email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data) {

@@ -24,6 +24,8 @@ import UserprofilePage from "../../page/UserprofilePage";
 import AdminRouter from "./AdminRouter";
 import PaymentRoute from "../../Dashboard/PaymentRoute";
 import TaskcreatorUpdate from "../../Dashboard/TaskcreatorUpdate";
+import TaskcreatorRoute from "./TaskcreatorRoute";
+import WorkerRoute from "./WorkerRoute";
 
 const router = createBrowserRouter([
   {
@@ -49,14 +51,17 @@ const router = createBrowserRouter([
     children: [
       {
         path: "adminhome",
-        element: <AdminHome></AdminHome>,
+        element: (
+          <AdminRouter>
+            <AdminHome></AdminHome>
+          </AdminRouter>
+        ),
       },
       {
         path: "manageuser",
         element: (
           <PrivetRoute>
             <AdminRouter>
-             
               <ManageUsers></ManageUsers>
             </AdminRouter>
           </PrivetRoute>
@@ -75,13 +80,19 @@ const router = createBrowserRouter([
       },
       {
         path: "creatorhome",
-        element: <TaskCreatorHome></TaskCreatorHome>,
+        element: (
+          <TaskcreatorRoute>
+            <TaskCreatorHome></TaskCreatorHome>
+          </TaskcreatorRoute>
+        ),
       },
       {
         path: "addnewtask",
         element: (
           <PrivetRoute>
-            <AddNewtask></AddNewtask>
+            <TaskcreatorRoute>
+              <AddNewtask></AddNewtask>
+            </TaskcreatorRoute>
           </PrivetRoute>
         ),
       },
@@ -89,29 +100,51 @@ const router = createBrowserRouter([
         path: "mytask",
         element: (
           <PrivetRoute>
-            <Mytasks></Mytasks>
+            <TaskcreatorRoute>
+              <Mytasks></Mytasks>
+            </TaskcreatorRoute>
           </PrivetRoute>
         ),
       },
       {
         path: "purchasecoin",
-        element: <PurchaseCoin></PurchaseCoin>,
+        element: (
+          <TaskcreatorRoute>
+            <PurchaseCoin></PurchaseCoin>
+          </TaskcreatorRoute>
+        ),
       },
       {
         path: "paymenthistory",
-        element: <PaymentHistory></PaymentHistory>,
+        element: (
+          <TaskcreatorRoute>
+            <PaymentHistory></PaymentHistory>
+          </TaskcreatorRoute>
+        ),
       },
       {
         path: "workerhome",
-        element: <WorkerHome></WorkerHome>,
+        element: (
+          <WorkerRoute>
+            <WorkerHome></WorkerHome>
+          </WorkerRoute>
+        ),
       },
       {
         path: "tasklist",
-        element: <TaskList></TaskList>,
+        element: (
+          <WorkerRoute>
+            <TaskList></TaskList>
+          </WorkerRoute>
+        ),
       },
       {
         path: "taskdetails/:id",
-        element: <TaskDetails></TaskDetails>,
+        element: (
+          <WorkerRoute>
+            <TaskDetails></TaskDetails>
+          </WorkerRoute>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://server-side-nu-sooty.vercel.app/taskcreatorsall/${params.id}`
@@ -119,11 +152,19 @@ const router = createBrowserRouter([
       },
       {
         path: "mysubmission",
-        element: <MySubmission></MySubmission>,
+        element: (
+          <WorkerRoute>
+            <MySubmission></MySubmission>
+          </WorkerRoute>
+        ),
       },
       {
         path: "withdraw",
-        element: <WithDrawals></WithDrawals>,
+        element: (
+          <WorkerRoute>
+            <WithDrawals></WithDrawals>
+          </WorkerRoute>
+        ),
       },
       {
         path: "paymentroute",
@@ -131,7 +172,11 @@ const router = createBrowserRouter([
       },
       {
         path: "taskupdate/:id",
-        element: <TaskcreatorUpdate></TaskcreatorUpdate>,
+        element: (
+          <TaskcreatorRoute>
+            <TaskcreatorUpdate></TaskcreatorUpdate>
+          </TaskcreatorRoute>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://server-side-nu-sooty.vercel.app/taskcreatorsall/${params.id}`

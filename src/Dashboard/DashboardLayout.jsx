@@ -39,7 +39,7 @@ const DashboardLayout = () => {
               </li>
             </> }
 {
-               (alluser.role==="task creator" ||alluser.role==="admin")  &&  
+               alluser.role==="task creator"   &&  
             <>
               <li className="bg-black py-1 text-white rounded-xl hover:scale-105">
                 <NavLink to={"/dashboard/creatorhome"}>Creator Home</NavLink>
@@ -61,7 +61,7 @@ const DashboardLayout = () => {
             </> }
 
             {
-                ( alluser.role==='worker' || alluser.role==='admin')  &&
+                 alluser.role==='worker'   &&
               <>
                 <li className="bg-black py-1 text-white rounded-xl hover:scale-105">
                   <NavLink to={"/dashboard/workerhome"}>Worker Home</NavLink>

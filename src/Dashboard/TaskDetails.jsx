@@ -3,6 +3,7 @@ import useAuth from "../Hooks/useAuth";
 
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../Hooks2/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const TaskDetails = () => {
   const Data = useLoaderData();
@@ -57,7 +58,15 @@ const TaskDetails = () => {
     };
     axiosPublic.post("/tasksubmission", SubmissionInfo).then((res) => {
       if (res.data) {
-        alert("data send successfully");
+       
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "data send successfully",
+          showConfirmButton: false,
+          timer: 1500
+        });
+
         form.reset();
       }
     });

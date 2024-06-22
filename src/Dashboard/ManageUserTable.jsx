@@ -46,8 +46,15 @@ const ManageUserTable = ({ info, fetch, idx }) => {
     console.log(updateInfo);
     axiosSecure.put(`/userup/${_id}`, updateInfo).then((res) => {
       if (res.data) {
-        alert("data updated");
+       
         fetch();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User deleted successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     });
   };

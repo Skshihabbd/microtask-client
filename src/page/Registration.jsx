@@ -7,6 +7,7 @@ import useAuth from "../Hooks/useAuth";
 import axios from "axios";
 import SocialLogin from "./SocialLogin";
 import useAxiosPublic from "../Hooks2/useAxiosPublic";
+import Swal from "sweetalert2";
 
 // import useAxiosPublic from "../Hooks/useAxiosPublic ";
 // const imgbb_api_key=import.meta.env.IMGBB_API_KEY
@@ -61,7 +62,15 @@ const Registration = () => {
         };
         axiosPublic.post("/user", userData).then((res) => {
           if (res.data.insertedId) {
-            alert("data send");
+            
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "data send",
+              showConfirmButton: false,
+              timer: 1500
+            });
+            
             reset();
             navigate(loaction?.state ? location.state : "/");
           }

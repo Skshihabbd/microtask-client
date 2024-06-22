@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import useAxiosPublic from "../Hooks2/useAxiosPublic";
+import Swal from "sweetalert2";
 
 
 const SocialLogin = () => {
@@ -8,31 +9,50 @@ const SocialLogin = () => {
   const axiosPublic = useAxiosPublic();
   const location = useLocation();
   const navigation = useNavigate();
-  console.log(users?.email);
+  
   const handleSocialLogin = (sociallogin) => {
     const role = "worker";
+     let Coin = 0;
+     if (role === "worker") {
+      Coin = 10;
+    }
     sociallogin().then((result) => {
       console.log(result.user);
       if (result.user) {
         navigation(location?.state ? location.state : "/");
-      }
-      let Coin = 0;
-      if (role === "worker") {
-        Coin = 10;
-      }
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "data work has been saved",
+          showConfirmButton: false,
+          timer: 1500
+        });
 
-      const userData = {
-        name: users.displayName,
-        email: users.email,
-        role: role,
-        coin: Coin,
-        image: users.photoURL,
-      };
-      axiosPublic.post("/user", userData).then((res) => {
-        if (res.data.insertedId) {
-          alert("data send");
-        }
-      });
+        console.log(result.user);
+  
+        const userData = {
+          name: result.user.displayName,
+          email:result.user.email,
+          role: role,
+          coin: Coin,
+          image:result.user.photoURL,
+        }; 
+        console.log(userData)
+        axiosPublic.post("/user", userData).then((res) => {
+          if (res.data.insertedId) {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "data send to server",
+              showConfirmButton: false,
+              timer: 1500
+            });
+          }
+        });
+
+      }
+     
+      
     });
   };
   return (

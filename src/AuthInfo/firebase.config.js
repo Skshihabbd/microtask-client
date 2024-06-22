@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBoW_JnXKrrWyuqvS_A_bMXoHtcTLD57M0",
-  authDomain: "pico-earning.firebaseapp.com",
-  projectId: "pico-earning",
-  storageBucket: "pico-earning.appspot.com",
-  messagingSenderId: "415971996511",
-  appId: "1:415971996511:web:1bd4d9b130bb3e9857fcea"
+  apiKey:  import.meta.env.VITE_APIKEY,
+  authDomain:  import.meta.env.VITE_AUTHDOMAIN,
+  projectId:  import.meta.env.VITE_PROJECTID,
+  storageBucket:  import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId:  import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID, 
 };
 
 // Initialize Firebase

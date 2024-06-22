@@ -14,7 +14,6 @@ const TaskCreatorAllTask = ({ info, idx, fetchs }) => {
   // console.log(ids)
   // const {payableAmount
   // }=ids
-  
 
   const { users } = useAuth();
   console.log(users?.email);
@@ -35,9 +34,6 @@ const TaskCreatorAllTask = ({ info, idx, fetchs }) => {
   console.log(coin, image);
   console.log(user);
 
-  //  let payamounts=
-  // console.log(payamounts)
-
   const handleUserUpdate = async (id) => {
     await fetch(`http://localhost:5000/taskcreators/${id}`)
       .then((res) => res.json())
@@ -46,60 +42,6 @@ const TaskCreatorAllTask = ({ info, idx, fetchs }) => {
           handleDelete(id, data);
         }
       });
-
-    //  console.log( payableAmount)
-
-    //     //     if (typeof ids?.payableAmount !== 'number'){
-    //     //         Swal.fire({
-    //     //             title: "Are you sure?",
-    //     //             text: "please press the delete button again",
-    //     //             icon: "warning",
-    //     //             showCancelButton: true,
-    //     //             confirmButtonColor: "#3085d6",
-    //     //             cancelButtonColor: "#d33",
-    //     //             confirmButtonText: "confirm"
-    //     //           })
-
-    //     //     }
-
-    //     // else{
-
-    //     //     const userUpdate={
-    //     //         name:name,
-    //     //          email:email,
-    //     //          role:role,
-    //     //          coin:payamounts,
-    //     //          image:image,
-
-    //     //       }
-
-    //     //         axiosPublic.put(`/user/${_id}` ,userUpdate).then(res=>
-    //     //             {
-
-    //     //                 if(res.data.modifiedCount>0){
-
-    //     //                     axiosPublic.delete(`/taskcreator/${id}`).then(res=>
-    //     //                        {
-
-    //     //                         if(res.data.deletedCount>0){
-
-    //     //                             Swal.fire({
-    //     //                                 position: "top-end",
-    //     //                                 icon: "success",
-    //     //                                 title: "your file has been deleted",
-    //     //                                 showConfirmButton: false,
-    //     //                                 timer: 1500
-    //     //                               })
-    //     //                                fetchs()
-    //     //                         }
-    //     //                     })
-    //     //                 }
-    //     //             }
-    //     //           )
-
-    //     // }
-
-    //         // alert('coin is not num press the delete button again')
   };
 
   const handleDelete = (ide, data) => {

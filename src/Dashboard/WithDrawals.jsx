@@ -81,7 +81,15 @@ const WithDrawals = () => {
 
     console.log(userUpdate);
     if (withdrawCoin > userworkerhomes.coin) {
-      alert("not avaiable coin for withdraw");
+      
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "not avaiable coin for withdraw!",
+        footer: '<a href="#">not avaiable coin for withdraw</a>'
+      });
+      
+
     } else {
       axiosPublic.post("/withdraw", postInfo).then((res) => {
         if (res.data) {

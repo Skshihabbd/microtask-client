@@ -39,7 +39,15 @@ const TaskcreatorUpdate = () => {
     };
     axiosSecure.put(`/taskcollectionupdate/${_id}`, updateInfo).then((res) => {
       if (res.data) {
-        alert("data updated");
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "data updated",
+          showConfirmButton: false,
+          timer: 1500
+        });
+
+       
       }
     });
   };

@@ -21,18 +21,21 @@ const AdminRouter = ({ children }) => {
   });
 
   console.log(user.role);
-  // if (loader) {
-  //     return (
-  //       <div className="h-svh flex bg-black items-center w-full">
-  //         <div className="w-16 h-16  border-4 mx-auto  border-dashed rounded-full animate-spin dark:border-violet-600"></div>
-  //       </div>
+  if (loader) {
+      return (
+        <div className="h-svh flex justify-center items-center w-full">
+         <span className="loading loading-bars loading-xs"></span>
+<span className="loading loading-bars loading-sm"></span>
+<span className="loading loading-bars loading-md"></span>
+<span className="loading loading-bars loading-lg"></span>
+        </div>
 
-  //     );
-  //   }
+      );
+    }
   if (users && user.role === "admin") {
     return children;
   }
-  return <Navigate to={"/login"} replace></Navigate>;
+  // return <Navigate to={"/login"} replace></Navigate>;
 };
 
 export default AdminRouter;

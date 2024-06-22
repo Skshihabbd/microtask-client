@@ -30,10 +30,11 @@ const router = createBrowserRouter([
     path: "/",
     element: <Main></Main>,
     errorElement: <ErrorPage></ErrorPage>,
-    children: [{ path: "/", element: <Home></Home> },
+    children: [
+      { path: "/", element: <Home></Home> },
       {
-        path:'profile',
-        element:<UserprofilePage></UserprofilePage>,
+        path: "profile",
+        element: <UserprofilePage></UserprofilePage>,
       },
     ],
   },
@@ -48,16 +49,32 @@ const router = createBrowserRouter([
     children: [
       {
         path: "adminhome",
-        element: <AdminHome></AdminHome>,
+        element: (
+         
+            <AdminHome></AdminHome>
+         
+        ),
       },
       {
         path: "manageuser",
-        element:<PrivetRoute> <ManageUsers></ManageUsers></PrivetRoute>,
+        element: (
+          <PrivetRoute>
+           <AdminRouter> <ManageUsers></ManageUsers></AdminRouter>
+          </PrivetRoute>
+        ),
       },
-      
+
       {
         path: "managetask",
-        element: <Managetask></Managetask>,
+        element: (
+          <PrivetRoute>
+           
+              <AdminRouter>
+              <Managetask></Managetask>
+              </AdminRouter>
+           
+          </PrivetRoute>
+        ),
       },
       {
         path: "creatorhome",
@@ -65,15 +82,19 @@ const router = createBrowserRouter([
       },
       {
         path: "addnewtask",
-        element: <PrivetRoute>
-          <AddNewtask></AddNewtask>
-        </PrivetRoute>,
+        element: (
+          <PrivetRoute>
+            <AddNewtask></AddNewtask>
+          </PrivetRoute>
+        ),
       },
       {
         path: "mytask",
-        element:<PrivetRoute>
-           <Mytasks></Mytasks>
-        </PrivetRoute>,
+        element: (
+          <PrivetRoute>
+            <Mytasks></Mytasks>
+          </PrivetRoute>
+        ),
       },
       {
         path: "purchasecoin",
@@ -92,10 +113,10 @@ const router = createBrowserRouter([
         element: <TaskList></TaskList>,
       },
       {
-        path:'taskdetails/:id',
-        element:<TaskDetails></TaskDetails>,
-        loader:({params})=> fetch(`http://localhost:5000/taskcreatorsall/${params.id}`)
-
+        path: "taskdetails/:id",
+        element: <TaskDetails></TaskDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/taskcreatorsall/${params.id}`),
       },
       {
         path: "mysubmission",
@@ -103,17 +124,18 @@ const router = createBrowserRouter([
       },
       {
         path: "withdraw",
-        element:<WithDrawals></WithDrawals>,
+        element: <WithDrawals></WithDrawals>,
       },
       {
-        path:'paymentroute',
-        element:<PaymentRoute></PaymentRoute>,
+        path: "paymentroute",
+        element: <PaymentRoute></PaymentRoute>,
       },
       {
-        path:'taskupdate/:id',
-        element:<TaskcreatorUpdate></TaskcreatorUpdate>,
-        loader:({params})=> fetch(`http://localhost:5000/taskcreatorsall/${params.id}`)
-      }
+        path: "taskupdate/:id",
+        element: <TaskcreatorUpdate></TaskcreatorUpdate>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/taskcreatorsall/${params.id}`),
+      },
     ],
   },
 ]);

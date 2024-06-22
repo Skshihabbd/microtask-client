@@ -60,7 +60,14 @@ const AddNewTaskForm = ({ info, fetch }) => {
     };
 
     if (allPayAmount > coin) {
-      return alert("not available coin please purchase coin");
+
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: " not available coin please purchase coin",
+        footer: '<a href="#"> not available coin please purchase coin</a>'
+      });
+     
     } else
       axiosPublic.post("/taskcreator", taskInfo).then((res) => {
         if (res.data.insertedId) {

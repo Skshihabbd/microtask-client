@@ -4,13 +4,12 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 // import { useNavigate } from "react-router-dom";
 
-
 const axiosSecure = axios.create({
   baseURL: "http://localhost:5000/",
 });
 
 const useAxiosSecure = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const { logOut } = useAuth();
   axiosSecure.interceptors.request.use(
     function (config) {

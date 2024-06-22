@@ -1,7 +1,7 @@
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 
-const stripePromise=loadStripe()
+// const stripePromise=loadStripe()
 
 const PaymentRoute = () => {
     return (
@@ -11,9 +11,9 @@ const PaymentRoute = () => {
 
 
 <div>
-    <Elements stripe={stripePromise}>
+    {/* <Elements stripe={stripePromise}>
 
-    </Elements>
+    </Elements> */}
 </div>
 
 

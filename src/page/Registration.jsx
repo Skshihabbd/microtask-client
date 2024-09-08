@@ -18,7 +18,7 @@ const Registration = () => {
   const [error, setError] = useState(" ");
   const loaction = useLocation();
   const navigate = useNavigate();
-  const axiosPublic =useAxiosPublic()
+  const axiosPublic = useAxiosPublic();
 
   const {
     register,
@@ -62,15 +62,14 @@ const Registration = () => {
         };
         axiosPublic.post("/user", userData).then((res) => {
           if (res.data.insertedId) {
-            
             Swal.fire({
               position: "top-end",
               icon: "success",
               title: "data send",
               showConfirmButton: false,
-              timer: 1500
+              timer: 1500,
             });
-            
+
             reset();
             navigate(loaction?.state ? location.state : "/");
           }
@@ -113,7 +112,9 @@ const Registration = () => {
               placeholder="Enter your name"
               {...register("UserName", { required: true })}
             />
-            {errors.UserName && <span>This field is required</span>}
+            {errors.UserName && (
+              <span className="text-white">This field is required</span>
+            )}
             <br />
             <label For="urll" className="text-white">
               Photo Url
@@ -138,14 +139,20 @@ const Registration = () => {
             <div>
               <select
                 className="w-full h-8"
-                {...register("role", { required: true })}
+                {...register("role", { required: "Please select a role" })}
               >
-                <option selected disabled value="worker">
+                <option disabled value="">
                   Select your role
                 </option>
                 <option value="worker">Worker</option>
                 <option value="task creator">Task creator</option>
+                <option value="">you have to select one </option>
               </select>
+              {errors.role && (
+                <span className="text-white border-2 z-30">
+                  {errors.role.message}
+                </span>
+              )}
             </div>
             <br />
             <label For="emails" className="text-white">
@@ -167,7 +174,9 @@ const Registration = () => {
                 },
               })}
             />
-            {errors.email && <span>{errors.email.message}</span>}
+            {errors.email && (
+              <span className="text-white">{errors.email.message}</span>
+            )}
             <p className="text-white">{error}</p>
             <br />
             <label For="passcode" className="text-white">

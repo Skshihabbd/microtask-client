@@ -1,5 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
+import { useState } from "react";
+import { Dialog } from "@headlessui/react";
 
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../Hooks2/useAxiosSecure";
@@ -8,6 +10,7 @@ import Swal from "sweetalert2";
 const TaskDetails = () => {
   const Data = useLoaderData();
   console.log(Data);
+  let [isOpen, setIsOpen] = useState(true);
 
   const { users } = useAuth();
   console.log(users?.email);
@@ -37,7 +40,7 @@ const TaskDetails = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    console.log(form);
+
     const SubmissionDetails = form.submitdetails.value;
     console.log(SubmissionDetails);
 
@@ -58,18 +61,23 @@ const TaskDetails = () => {
     };
     axiosPublic.post("/tasksubmission", SubmissionInfo).then((res) => {
       if (res.data) {
-       
         Swal.fire({
           position: "top-end",
           icon: "success",
           title: "data send successfully",
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         });
 
         form.reset();
+        setIsOpen(false);
       }
     });
+  };
+
+  const openModal = () => {
+    setIsOpen(true);
+    console.log(isOpen);
   };
   return (
     <div>
@@ -84,11 +92,19 @@ const TaskDetails = () => {
           <p>Amout to pay:{payableAmount}</p>
           <p>Task creator: {creatorName}</p>
           <p>task Id:{_id}</p>
-          <p>Task creator:{email.slice(0, 20)}</p>
+          <p>Task creator:{email}</p>
           <p>date of creation:{currenttime}</p>
         </div>
       </div>
-      <form className="" onSubmit={handleSubmit}>
+      <div>
+        <button
+          onClick={openModal}
+          className="btn btn-success w-full text-white"
+        >
+          Task Submission details
+        </button>
+      </div>
+      {/* <form className="" onSubmit={handleSubmit}>
         <label className="text-center lg:text-3xl ">Submission_Details</label>{" "}
         <br />
         <textarea
@@ -97,10 +113,38 @@ const TaskDetails = () => {
           id=""
           cols="20"
           rows="10"
-        ></textarea>{" "}
+        ></textarea>
         <br />
         <button className="btn btn-success">submit Details </button>
-      </form>
+      </form> */}
+      <Dialog
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+        className="relative absolute z-50"
+      >
+        <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
+          <Dialog.Panel className="w-full max-w-sm rounded bg-black">
+            <Dialog.Title className="text-center text-white lg:text-3xl ">
+              Submission_Details
+            </Dialog.Title>
+
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col justify-center items-center"
+            >
+              <textarea
+                className="bg-slate-600 text-white  text-xl "
+                name="submitdetails"
+                id=""
+                cols="30"
+                rows="5"
+              ></textarea>
+              <br />
+              <button className="btn btn-success">submit Details </button>
+            </form>
+          </Dialog.Panel>
+        </div>
+      </Dialog>
     </div>
   );
 };

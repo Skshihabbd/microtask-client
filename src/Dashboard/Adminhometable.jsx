@@ -24,7 +24,8 @@ const Adminhometable = ({ info, idx, fetcher }) => {
       coin: data.coin - info.WithdrawCoin,
       image: data.image,
       role: data.role,
-    };
+    }; 
+    console.log(updateUser)
 
     axiosSecure
       .put(`/adminhomeallpayment/${data._id}`, updateUser)

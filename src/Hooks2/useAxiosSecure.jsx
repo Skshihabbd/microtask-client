@@ -5,7 +5,7 @@ import useAuth from "../Hooks/useAuth";
 // import { useNavigate } from "react-router-dom";
 
 const axiosSecure = axios.create({
-  baseURL: "https://server-side-nu-sooty.vercel.app/",
+  baseURL: "https://server-side-nu-sooty.vercel.app",
 });
 
 const useAxiosSecure = () => {

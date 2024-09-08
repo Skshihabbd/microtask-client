@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 
 
 const PurchaseCoin = () => {
+
+
+    
     return (
         <div className="space-y-8">
             

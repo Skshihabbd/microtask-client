@@ -43,6 +43,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const updateUser = (name, image) => {
+    setLoader(true)
    
     return updateProfile(auth.currentUser, {
       displayName: name,
@@ -53,8 +54,6 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log("this is the current user info", currentUser);
-
-      
 
       if (currentUser) {
         // get token and store client
@@ -69,14 +68,13 @@ const AuthProvider = ({ children }) => {
       } else {
         // TODO: remove token (if token stored in the client side: Local storage, caching, in memory)
         localStorage.removeItem("access-token");
-        
-        setUsers(null);
+
+        setUsers(currentUser);
         setLoader(false);
       }
-      
     });
     return () => {
-       unSubscribe();
+      unSubscribe();
     };
   }, [axiosPublic]);
 

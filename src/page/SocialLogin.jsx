@@ -3,41 +3,40 @@ import useAuth from "../Hooks/useAuth";
 import useAxiosPublic from "../Hooks2/useAxiosPublic";
 import Swal from "sweetalert2";
 
-
 const SocialLogin = () => {
   const { googleSignIn, githubSignIn, users } = useAuth();
   const axiosPublic = useAxiosPublic();
   const location = useLocation();
   const navigation = useNavigate();
-  
-  const handleSocialLogin = (sociallogin) => {
+
+  const handleSocialLogin = async (sociallogin) => {
     const role = "worker";
-     let Coin = 0;
-     if (role === "worker") {
-      Coin = 10;
-    }
-    sociallogin().then((result) => {
+    let Coin = 10;
+    // if (role === "worker") {
+    //   Coin = 10;
+    // }
+    await sociallogin().then((result) => {
       console.log(result.user);
       if (result.user) {
         navigation(location?.state ? location.state : "/");
         Swal.fire({
-          position: "top-end",
+          position: "center",
           icon: "success",
-          title: "data work has been saved",
+          title: "Login successfull",
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         });
 
         console.log(result.user);
-  
+
         const userData = {
-          name: result.user.displayName,
-          email:result.user.email,
+          name: result?.user?.displayName,
+          email: result?.user?.email,
           role: role,
           coin: Coin,
-          image:result.user.photoURL,
-        }; 
-        console.log(userData)
+          image: result?.user?.photoURL,
+        };
+        console.log(userData);
         axiosPublic.post("/user", userData).then((res) => {
           if (res.data.insertedId) {
             Swal.fire({
@@ -45,14 +44,11 @@ const SocialLogin = () => {
               icon: "success",
               title: "data send to server",
               showConfirmButton: false,
-              timer: 1500
+              timer: 1500,
             });
           }
         });
-
       }
-     
-      
     });
   };
   return (

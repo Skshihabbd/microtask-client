@@ -7,7 +7,7 @@ const Navber = () => {
     <>
       {users ? (
         <>
-          <ul className="flex lg:flex-row flex-col justify-between items-center text-black space-y-2 md:space-y-0 ">
+          <ul className="flex lg:flex-row flex-col justify-between items-center text-black space-y-1 md:space-y-0 ">
             <Link to={"/dashboard"}>
               <li className=" hover:text-white hover:bg-[#188A46] p-4">
                 Dashboard

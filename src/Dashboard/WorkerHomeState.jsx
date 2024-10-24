@@ -53,8 +53,8 @@ const WorkerHomeState = () => {
         <p>total submission: {userworkerhomessubmit.length}</p>
         <p>All Payable amount : {sum2}</p>
       </div>
-      <div>
-        <table className="table">
+      <div className="overflow-x-auto">
+        <table className="table ">
           <thead>
             <tr>
               <th>index</th>

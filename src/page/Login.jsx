@@ -8,10 +8,11 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SocialLogin from "./SocialLogin";
-// 
+import { RxColorWheel } from "react-icons/rx";
+//
 // import Footer from "../../sharedcomponent/footer/Footer";
 const Login = () => {
-  const { SignIn, users } = useAuth();
+  const { SignIn, users, loader, setLoader } = useAuth();
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
@@ -33,12 +34,14 @@ const Login = () => {
       .then((result) => {
         console.log(result.user);
         setSuccess(toast("login successfull"));
+
         reset();
         navigate(location?.state ? location.state : "/");
       })
       .catch((errores) => {
         console.log(errores.message);
         setError(toast("user Information is wrong"));
+        setLoader(false);
       });
   };
   return (
@@ -47,43 +50,60 @@ const Login = () => {
                 <title>realstate |login</title>
             </Helmet>
   <Navber></Navber> */}
-      <div className="lg:w-2/4 mx-auto border-2 my-8 bg-slate-800 bg-opacity-25">
+      <div className="lg:w-3/4 mx-auto  my-8 bg-slate-800 bg-opacity-25">
         <h1 className="text-center mb-10">Login your account</h1>
         <hr className="w-5/6 mx-auto mb-12" />
         <div className="px-16 ">
           <form onSubmit={handleSubmit(onSubmit)}>
-            <label For="emails" className="text-white">
-              Email{" "}
-            </label>
-            <br />
-            <input
-              className="w-full bg-[#F3F3F3] mb-4 h-10 outline-0"
-              type="email"
-              name="email"
-              id="emails"
-              required
-              placeholder="Enter your email address "
-              {...register("email", { required: true })}
-            />
-            {errors.email && <span>This field is required</span>}
+            <div className="h-16">
+              <label For="emails" className="text-white">
+                Email{" "}
+              </label>
+              <br />
+              <input
+                className="w-full bg-[#F3F3F3] mb-1 h-10 outline-0 rounded-sm"
+                type="email"
+                name="email"
+                id="emails"
+                required
+                placeholder="Enter your email address "
+                {...register("email", { required: true })}
+              />
+              {errors.email && (
+                <span className="text-white">This field is required</span>
+              )}
+            </div>
             <br />
             <label For="passcode" className="text-white">
               Password
             </label>
             <br />
-            <input
-              className="w-full bg-[#F3F3F3] mb-4 h-10 outline-none"
-              type="password"
-              name="password"
-              id="passcode"
-              required
-              placeholder="Enter your password"
-              {...register("password", { required: true })}
-            />
-            {errors.password && <span>This field is required</span>}
-            <p>{error}</p>
+            <div className="h-16">
+              <input
+                className="w-full bg-[#F3F3F3] mb-1 h-10 outline-0 rounded-sm"
+                type="password"
+                name="password"
+                id="passcode"
+                required
+                placeholder="Enter your password"
+                {...register("password", { required: true })}
+              />
+              {errors.password && (
+                <span className="text-white">This field is required</span>
+              )}
+              <p>{error}</p>
+            </div>
 
-            <button className="w-full btn btn-secondary my-3 ">Login</button>
+            <button
+              disabled={loader}
+              className="w-full btn btn-secondary my-3 "
+            >
+              {loader ? (
+                <RxColorWheel className="animate-spin mx-auto text-white text-3xl" />
+              ) : (
+                " Login"
+              )}
+            </button>
           </form>
 
           {users ? (
@@ -98,7 +118,7 @@ const Login = () => {
           )}
         </div>
         <div className=" flex justify-center">
-         <SocialLogin></SocialLogin>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
       {/* <Footer></Footer> */}

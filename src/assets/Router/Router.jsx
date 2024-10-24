@@ -167,7 +167,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "paymentroute",
+        path: "paymentroute/:coin/:price",
         element: <PaymentRoute></PaymentRoute>,
       },
       {

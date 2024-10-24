@@ -43,8 +43,8 @@ const AuthProvider = ({ children }) => {
   };
 
   const updateUser = (name, image) => {
-    setLoader(true)
-   
+    setLoader(true);
+
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: image,
@@ -93,6 +93,7 @@ const AuthProvider = ({ children }) => {
     githubSignIn,
     loader,
     setUsers,
+    setLoader,
   };
   // const object = { shihab: "shihab12" };
 

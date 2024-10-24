@@ -6,17 +6,18 @@ import { Dialog } from "@headlessui/react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../Hooks2/useAxiosSecure";
 import Swal from "sweetalert2";
+import Countdownreact from "../components/Countdownreact";
 
 const TaskDetails = () => {
   const Data = useLoaderData();
   console.log(Data);
-  let [isOpen, setIsOpen] = useState(true);
+  let [isOpen, setIsOpen] = useState(false);
 
   const { users } = useAuth();
   console.log(users?.email);
   const axiosPublic = useAxiosSecure();
 
-  const { data: userr = [], refetch } = useQuery({
+  const { data: userr = [] } = useQuery({
     queryKey: ["userr"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/userr?email=${users?.email}`);
@@ -94,6 +95,12 @@ const TaskDetails = () => {
           <p>task Id:{_id}</p>
           <p>Task creator:{email}</p>
           <p>date of creation:{currenttime}</p>
+          <div>
+            <Countdownreact
+              startDateTime={currenttime}
+              endDateTime={"2024-09-27T00:20"}
+            ></Countdownreact>
+          </div>
         </div>
       </div>
       <div>
@@ -122,7 +129,7 @@ const TaskDetails = () => {
         onClose={() => setIsOpen(false)}
         className="relative absolute z-50"
       >
-        <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
+        <div className="fixed inset-0 flex w-screen items-center justify-around p-4">
           <Dialog.Panel className="w-full max-w-sm rounded bg-black">
             <Dialog.Title className="text-center text-white lg:text-3xl ">
               Submission_Details
@@ -133,6 +140,7 @@ const TaskDetails = () => {
               className="flex flex-col justify-center items-center"
             >
               <textarea
+                required
                 className="bg-slate-600 text-white  text-xl "
                 name="submitdetails"
                 id=""

@@ -21,10 +21,9 @@ const DashBoardNavbar = () => {
     },
   });
   return (
-    <div className="w-full flex flex-row relative ">
-      <div className="w-1/6 border-2 flex justify-center">
+    <div className="w-11/12 mx-auto flex flex-row relative items-center">
+      <div className="w-1/6 lg:py-10  flex justify-center">
         <Link to={"/"}>
-          {" "}
           <h1 className="text-bold lg:text-2xl">Pico Worker</h1>
         </Link>
       </div>
@@ -36,16 +35,12 @@ const DashBoardNavbar = () => {
             fetch={refetch}
           ></DashboardNavbarmenu>
         }
-
-        {/* <h1>{user[0].coin}</h1> <h1><img className="w-6 h-6 rounded-full" src={user[0].image} alt="" /></h1> 
-<h1>{user[0].role}</h1> <h1>{user[0].name}</h1> */}
       </div>
-      <div className="w-1/6  border-2 bg-black">
-        <h1 className="text-5xl items-center flex relative justify-center text-blue-700 ">
-          {" "}
+      <div className="w-1/6 hidden md:flex   ">
+        <h1 className="md:text-5xl items-center flex relative justify-center   text-slate-600 ">
           <IoIosNotifications />
           <span className="absolute  text-2xl font-medium text-yellow-500  ">
-            10
+            {}
           </span>
         </h1>
       </div>

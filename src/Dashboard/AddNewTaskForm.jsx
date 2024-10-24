@@ -4,7 +4,6 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../Hooks2/useAxiosSecure";
 
 const AddNewTaskForm = ({ info, fetch }) => {
-  const { refetch } = fetch;
   const { coin, email, name, role, _id, image } = info;
   const axiosPublic = useAxiosSecure();
   // console.log(typeof coin)
@@ -60,14 +59,12 @@ const AddNewTaskForm = ({ info, fetch }) => {
     };
 
     if (allPayAmount > coin) {
-
       Swal.fire({
         icon: "error",
         title: "Oops...",
         text: " not available coin please purchase coin",
-        footer: '<a href="#"> not available coin please purchase coin</a>'
+        footer: '<a href="#"> not available coin please purchase coin</a>',
       });
-     
     } else
       axiosPublic.post("/taskcreator", taskInfo).then((res) => {
         if (res.data.insertedId) {

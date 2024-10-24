@@ -64,7 +64,7 @@ const Navber = () => {
           </div>
           <ul
             tabIndex={0}
-            className="  menu menu-sm dropdown-content mt-3 z-[1] p-2 w-40   border-2   shadow bg-white bg-opacity-75 rounded-box   "
+            className="  menu menu-sm dropdown-content mt-3 z-10 p-2 w-40   border-2   shadow bg-white bg-opacity-75 rounded-box   "
           >
             {navlink}
           </ul>
@@ -73,7 +73,7 @@ const Navber = () => {
           <Link to={"/"}>Pico Worker</Link>
         </a>
       </div>
-      <div className="navbar-center hidden lg:flex">
+      <div className="navbar-center hidden  lg:flex">
         <ul className="menu menu-horizontal px-1">{navlink}</ul>
       </div>
       {users ? (

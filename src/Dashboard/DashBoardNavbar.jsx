@@ -21,13 +21,13 @@ const DashBoardNavbar = () => {
     },
   });
   return (
-    <div className="w-11/12 mx-auto flex flex-row relative items-center">
-      <div className="w-1/6 lg:py-10  flex justify-center">
+    <div className="w-11/12 mx-auto flex flex-row justify-evenly relative items-center">
+      <div className=" border-2 lg:py-10  ">
         <Link to={"/"}>
-          <h1 className="text-bold lg:text-2xl">Pico Worker</h1>
+          <h1 className="text-bold lg:text-2xl ">Pico Worker</h1>
         </Link>
       </div>
-      <div className="w-4/6">
+      <div className="">
         {
           <DashboardNavbarmenu
             key={user._id}
@@ -36,7 +36,7 @@ const DashBoardNavbar = () => {
           ></DashboardNavbarmenu>
         }
       </div>
-      <div className="w-1/6 hidden md:flex   ">
+      <div className=" hidden md:flex   ">
         <h1 className="md:text-5xl items-center flex relative justify-center   text-slate-600 ">
           <IoIosNotifications />
           <span className="absolute  text-2xl font-medium text-yellow-500  ">

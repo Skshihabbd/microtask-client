@@ -52,7 +52,7 @@ const DashboardLayout = () => {
       </div>
 
       <div
-        className="grid grid-cols-8  top-[92px] 
+        className="grid grid-cols-8  top-[65px] 
       md:top-[72px] lg:top-28 absolute   w-full "
       >
         <div className={`col-span-2 relative   z-10   lg:flex  `}>
@@ -63,12 +63,6 @@ const DashboardLayout = () => {
                 : "opacity-0   animate__animated animate__fadeOutLeft   "
             }`}
           >
-            {/* <button
-              onClick={() => setToggle(!toggle)}
-              className="lg:hidden absolute top-2 right-2"
-            >
-              <RxCross2 className="text-white text-2xl " />
-            </button> */}
             <ul className="space-y-10 my-16 mx-6 lg:h-40  2xl:h-52   mx-auto">
               {alluser.role === "admin" && (
                 <>

@@ -53,7 +53,7 @@ const DashboardLayout = () => {
 
       <div
         className="grid grid-cols-8  top-[90px] 
-      md:top-[72px] lg:top-28 absolute   w-full "
+      md:top-[95px] lg:top-28 absolute   w-full "
       >
         <div className={`col-span-2 relative   z-10   lg:flex  `}>
           <div

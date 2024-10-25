@@ -2,8 +2,15 @@ import Countdown from "react-countdown";
 
 const Countdownreact = ({ startDateTime, endDateTime }) => {
   const startTime = new Date(startDateTime).getTime();
+  let endTimeDate = new Date(endDateTime);
+  if (endDateTime.length === 10) {
+    // Checking if only date is provided
+    endTimeDate.setHours(23, 59, 59, 999);
+  }
+
   const endTime = new Date(endDateTime).getTime();
 
+  console.log("start", startTime, "end", endTime);
   // Renderer for the countdown
   const renderer = ({
     days,
@@ -17,9 +24,13 @@ const Countdownreact = ({ startDateTime, endDateTime }) => {
       return <h1>Time is up!</h1>;
     } else {
       return (
-        <div>
-          <h1>
-            {days}d {hours}h {minutes}m {seconds}s {milliseconds}s
+        <div className="">
+          <h1 className="bg-black py-2 px-2  space-x-2  ">
+            <span className="text-purple-700">{days}d</span>{" "}
+            <span className="text-teal-600">{hours}h</span>
+            <span className="text-amber-800">{minutes}m</span>
+            <span className="text-white">{seconds}s</span>
+            <span className="text-red-800">{milliseconds}s</span>
           </h1>
         </div>
       );

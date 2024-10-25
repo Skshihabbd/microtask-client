@@ -36,6 +36,7 @@ const TaskDetails = () => {
     creatorName,
     email,
     currenttime,
+    completionDate,
   } = Data;
 
   const handleSubmit = (e) => {
@@ -94,11 +95,12 @@ const TaskDetails = () => {
           <p>Task creator: {creatorName}</p>
           <p>task Id:{_id}</p>
           <p>Task creator:{email}</p>
+          <p>date of end:{completionDate}T11:59:59s:59mili</p>
           <p>date of creation:{currenttime}</p>
-          <div>
+          <div className=" w-56 ">
             <Countdownreact
               startDateTime={currenttime}
-              endDateTime={"2024-09-27T00:20"}
+              endDateTime={completionDate}
             ></Countdownreact>
           </div>
         </div>

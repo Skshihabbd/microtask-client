@@ -29,15 +29,15 @@ const Managetask = () => {
               <th>Completion date</th>
             </tr>
           </thead>
+          {managetasksall.map((info, idx) => (
+            <Managetasktable
+              fetchp={refetch}
+              key={info._id}
+              idx={idx}
+              info={info}
+            ></Managetasktable>
+          ))}
         </table>
-        {managetasksall.map((info, idx) => (
-          <Managetasktable
-            fetchp={refetch}
-            key={info._id}
-            idx={idx}
-            info={info}
-          ></Managetasktable>
-        ))}
       </div>
     </div>
   );

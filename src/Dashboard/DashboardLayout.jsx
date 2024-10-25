@@ -26,14 +26,14 @@ const DashboardLayout = () => {
   return (
     <div className="w-full relative">
       <div className="w-full relative">
-        <div className="fixed bg-sky-600 w-full z-20 ">
+        <div className="fixed bg-sky-600 w-full z-20  ">
           <DashBoardNavbar></DashBoardNavbar>
 
           {toggle ? (
             <>
               <button
                 onClick={() => setToggle(false)}
-                className=" absolute  animate__animated animate__zoomIn z-30 md:top-7 md:left-2 right-2 top-8  "
+                className="  w-10 absolute  animate__animated animate__zoomIn z-30 md:top-7 md:left-2 right-2 top-8  "
               >
                 <RxCross1 className="text-3xl  text-white" />
               </button>
@@ -42,7 +42,7 @@ const DashboardLayout = () => {
             <>
               <button
                 onClick={() => setToggle(true)}
-                className=" absolute  animate__animated animate__flipInX z-30 md:top-7 md:left-2 right-2 top-8  "
+                className=" absolute w-10 animate__animated animate__zoomIn z-30 md:top-7 md:left-2 right-2 top-8  "
               >
                 <CgMenu className="text-3xl  text-white" />
               </button>
@@ -52,7 +52,7 @@ const DashboardLayout = () => {
       </div>
 
       <div
-        className="grid grid-cols-8  top-[65px] 
+        className="grid grid-cols-8  top-[90px] 
       md:top-[72px] lg:top-28 absolute   w-full "
       >
         <div className={`col-span-2 relative   z-10   lg:flex  `}>

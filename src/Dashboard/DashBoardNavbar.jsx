@@ -21,8 +21,8 @@ const DashBoardNavbar = () => {
     },
   });
   return (
-    <div className="w-11/12 mx-auto flex flex-row justify-evenly relative items-center">
-      <div className=" border-2 lg:py-10  ">
+    <div className="w-11/12 mx-auto flex py-4 md:py-3 lg:py-5  justify-around relative items-center">
+      <div className="    ">
         <Link to={"/"}>
           <h1 className="text-bold lg:text-2xl ">Pico Worker</h1>
         </Link>

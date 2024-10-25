@@ -42,7 +42,7 @@ const DashboardLayout = () => {
             <>
               <button
                 onClick={() => setToggle(true)}
-                className=" absolute w-10 animate__animated animate__zoomIn z-30 md:top-7 md:left-2 right-2 top-8  "
+                className=" absolute w-10 animate__animated animate__flipInX z-30 md:top-7 md:left-2 right-2 top-8  "
               >
                 <CgMenu className="text-3xl  text-white" />
               </button>

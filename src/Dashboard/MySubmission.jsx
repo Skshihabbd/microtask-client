@@ -21,7 +21,7 @@ const MySubmission = () => {
   return (
     <div>
       <p>my MySubmission Count:{userworkerhomessubmit.length}</p>
-      <div>
+      <div className="overflow-x-auto">
         <table className="table ">
           <thead>
             <tr>
@@ -32,14 +32,14 @@ const MySubmission = () => {
               <th className="pr-16">Status</th>
             </tr>
           </thead>
+          {userworkerhomessubmit.map((info, idx) => (
+            <MysubmissionTable
+              key={info._id}
+              idx={idx}
+              info={info}
+            ></MysubmissionTable>
+          ))}
         </table>
-        {userworkerhomessubmit.map((info, idx) => (
-          <MysubmissionTable
-            key={info._id}
-            idx={idx}
-            info={info}
-          ></MysubmissionTable>
-        ))}
       </div>
     </div>
   );

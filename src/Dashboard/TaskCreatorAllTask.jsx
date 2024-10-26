@@ -1,12 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+
 import useAuth from "../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../Hooks2/useAxiosSecure";
 
 const TaskCreatorAllTask = ({ info, idx, fetchs }) => {
-  const [ids, setid] = useState(null);
   const axiosPublic = useAxiosSecure();
 
   // const
@@ -18,11 +17,7 @@ const TaskCreatorAllTask = ({ info, idx, fetchs }) => {
   const { users } = useAuth();
   console.log(users?.email);
 
-  const {
-    data: user = [],
-    refetch,
-    isLoading,
-  } = useQuery({
+  const { data: user = [], refetch } = useQuery({
     queryKey: ["user"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/user?email=${users?.email}`);
@@ -89,25 +84,23 @@ const TaskCreatorAllTask = ({ info, idx, fetchs }) => {
   };
 
   return (
-    <div>
-      <tbody className="table">
-        {/* row 1 */}
-        <tr className="bg-base-200 text-center">
-          <th>{idx + 1}</th>
-          <td>{info.title}</td>
-          <td className="text-center">{info.quantity}</td>
-          <td>{info.payableAmount}</td>
-          <td>
-            <Link to={`/dashboard/taskupdate/${info._id}`}>
-              <button>update</button>
-            </Link>
-          </td>
-          <td>
-            <button onClick={() => handleUserUpdate(info._id)}>delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </div>
+    <tbody>
+      {/* row 1 */}
+      <tr className="bg-base-200 ">
+        <th>{idx + 1}</th>
+        <td>{info.title}</td>
+        <td>{info.quantity}</td>
+        <td>{info.payableAmount}</td>
+        <td>
+          <Link to={`/dashboard/taskupdate/${info._id}`}>
+            <button>update</button>
+          </Link>
+        </td>
+        <td>
+          <button onClick={() => handleUserUpdate(info._id)}>delete</button>
+        </td>
+      </tr>
+    </tbody>
   );
 };
 

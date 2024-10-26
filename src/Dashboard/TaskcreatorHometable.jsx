@@ -1,6 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
-
-import { useState } from "react";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../Hooks2/useAxiosSecure";
 
@@ -139,72 +136,58 @@ const TaskcreatorHometable = ({ info, idx, fetche }) => {
   };
 
   return (
-    <div>
-      <div className="overflow-x-auto">
-        <table className="table">
-          {/* head */}
-
-          <tbody>
-            <tr>
-              <th>{idx + 1}</th>
-              <td>{info.task_title}</td>
-              <td>
-                {info.worker_name}
-                <br />
-                <span className="badge badge-ghost badge-sm">
-                  {info.worker_email}
-                </span>
-                <br />
-                <span>status:{info.status}</span>
-              </td>
-              <td>
+    <tbody>
+      <tr>
+        <th>{idx + 1}</th>
+        <td>{info.task_title}</td>
+        <td>
+          {info.worker_name}
+          <br />
+          <span className="badge badge-ghost badge-sm">
+            {info.worker_email}
+          </span>
+          <br />
+          <span>status:{info.status}</span>
+        </td>
+        <td>
+          <button onClick={() => document.getElementById(info._id).showModal()}>
+            click to view details
+          </button>
+          {/* {updateStatus(info._id ,datas._id) */}
+        </td>
+        <th>
+          <details className="dropdown">
+            <summary className="m-1 btn">update status</summary>
+            <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+              <li>
                 <button
-                  onClick={() => document.getElementById(info._id).showModal()}
+                  onClick={() => {
+                    handleUserDataget(info.worker_email, info._id);
+                  }}
                 >
-                  click to view details
+                  Approved
                 </button>
-                {/* {updateStatus(info._id ,datas._id) */}
-              </td>
-              <th>
-                <details className="dropdown">
-                  <summary className="m-1 btn">update status</summary>
-                  <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-                    <li>
-                      <button
-                        onClick={() => {
-                          handleUserDataget(info.worker_email, info._id);
-                        }}
-                      >
-                        Approved
-                      </button>
-                    </li>
-                    <li>
-                      <button onClick={() => rejectStatus(info._id)}>
-                        reject
-                      </button>
-                    </li>
-                  </ul>
-                </details>
-              </th>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div>
-        <dialog id={info._id} className="modal">
-          <div className="modal-box">
-            <h3 className="font-bold text-lg border-b-4">Submission Details</h3>
-            <p className="py-4">{info.submission_details}</p>
-            <div className="modal-action">
-              <form method="dialog">
-                {/* if there is a button in form, it will close the modal */}
-                <button className="btn">Close</button>
-              </form>
-            </div>
+              </li>
+              <li>
+                <button onClick={() => rejectStatus(info._id)}>reject</button>
+              </li>
+            </ul>
+          </details>
+        </th>
+      </tr>
+      <dialog id={info._id} className="modal">
+        <div className="modal-box">
+          <h3 className="font-bold text-lg border-b-4">Submission Details</h3>
+          <p className="py-4">{info.submission_details}</p>
+          <div className="modal-action">
+            <form method="dialog">
+              {/* if there is a button in form, it will close the modal */}
+              <button className="btn">Close</button>
+            </form>
           </div>
-        </dialog>
-      </div>
-    </div>
+        </div>
+      </dialog>
+    </tbody>
   );
 };
 

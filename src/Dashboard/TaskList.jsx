@@ -6,7 +6,7 @@ const TaskList = () => {
   // const axiosSecure=useAxiosPublic ()
   const axiosSecure = useAxiosSecure();
 
-  const { data: alltasks = [], refetch } = useQuery({
+  const { data: alltasks = [] } = useQuery({
     queryKey: ["alltasks"],
     queryFn: async () => {
       const res = await axiosSecure.get("/taskcreatorall");

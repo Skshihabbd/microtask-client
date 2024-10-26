@@ -45,15 +45,15 @@ const TaskCreatorHome = () => {
               <th>Approved or reject</th>
             </tr>
           </thead>
+          {taskhomesubmits.map((info, idx) => (
+            <TaskcreatorHometable
+              key={info._id}
+              idx={idx}
+              fetche={refetch}
+              info={info}
+            ></TaskcreatorHometable>
+          ))}
         </table>
-        {taskhomesubmits.map((info, idx) => (
-          <TaskcreatorHometable
-            key={info._id}
-            idx={idx}
-            fetche={refetch}
-            info={info}
-          ></TaskcreatorHometable>
-        ))}
       </div>
     </div>
   );

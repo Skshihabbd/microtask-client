@@ -97,7 +97,7 @@ const TaskDetails = () => {
           <p>Task creator:{email}</p>
           <p>date of end:{completionDate}T11:59:59s:59mili</p>
           <p>date of creation:{currenttime}</p>
-          <div className=" w-56 ">
+          <div className=" w-60 ">
             <Countdownreact
               startDateTime={currenttime}
               endDateTime={completionDate}
@@ -145,7 +145,6 @@ const TaskDetails = () => {
                 required
                 className="bg-slate-600 text-white  text-xl "
                 name="submitdetails"
-                id=""
                 cols="30"
                 rows="5"
               ></textarea>

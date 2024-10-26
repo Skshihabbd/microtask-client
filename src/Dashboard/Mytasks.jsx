@@ -32,16 +32,15 @@ const Mytasks = () => {
             <th>delete</th>
           </tr>
         </thead>
+        {task.map((info, idx) => (
+          <TaskCreatorAllTask
+            fetchs={refetch}
+            key={info._id}
+            info={info}
+            idx={idx}
+          ></TaskCreatorAllTask>
+        ))}
       </table>
-
-      {task.map((info, idx) => (
-        <TaskCreatorAllTask
-          fetchs={refetch}
-          key={info._id}
-          info={info}
-          idx={idx}
-        ></TaskCreatorAllTask>
-      ))}
     </div>
   );
 };

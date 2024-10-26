@@ -20,7 +20,7 @@ const Home = () => {
   });
 
   return (
-    <div>
+    <div className="sm:container mx-auto">
       <div>
         <Banner></Banner>
       </div>

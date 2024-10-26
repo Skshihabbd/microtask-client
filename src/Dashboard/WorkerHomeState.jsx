@@ -8,7 +8,7 @@ const WorkerHomeState = () => {
   const axiosPublic = useAxiosSecure();
   const { users } = useAuth();
   console.log(users);
-  const { data: userworkerhomes = [], refetch } = useQuery({
+  const { data: userworkerhomes = [] } = useQuery({
     queryKey: ["userworkerhomes"],
     queryFn: async () => {
       const res = await axiosPublic.get(
@@ -40,9 +40,10 @@ const WorkerHomeState = () => {
 
   console.log(userworkerhomessubmitpay);
 
-  const sum = userworkerhomessubmitpay.reduce((accumulator, item) => {
-    return accumulator + item.payableAmount;
-  }, userworkerhomes.coin);
+  // const sum = userworkerhomessubmitpay.reduce((accumulator, item) => {
+  //   return accumulator + item.payableAmount;
+  // }, userworkerhomes.coin);
+
   const sum2 = userworkerhomessubmitpay.reduce((accumulator, item) => {
     return accumulator + item.payableAmount;
   }, 0);
@@ -64,14 +65,14 @@ const WorkerHomeState = () => {
               <th className="pr-16">Status</th>
             </tr>
           </thead>
+          {userworkerhomessubmitpay.map((info, idx) => (
+            <WorkerApprovedSubmissionTable
+              key={info._id}
+              idx={idx}
+              info={info}
+            ></WorkerApprovedSubmissionTable>
+          ))}
         </table>
-        {userworkerhomessubmitpay.map((info, idx) => (
-          <WorkerApprovedSubmissionTable
-            key={info._id}
-            idx={idx}
-            info={info}
-          ></WorkerApprovedSubmissionTable>
-        ))}
       </div>
     </div>
   );

@@ -2,8 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import ManageUserTable from "./ManageUserTable";
 import useAxiosSecure from "../Hooks2/useAxiosSecure";
-import axios from "axios";
-import useAxiosPublic from "../Hooks2/useAxiosPublic";
+
 // import useuseAxiosPublic  from "../Hooks/useuseAxiosPublic ";
 const ManageUsers = () => {
   const token = localStorage.getItem("access-token");

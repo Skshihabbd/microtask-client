@@ -66,39 +66,119 @@ const DashboardLayout = () => {
             <ul className="space-y-10 my-16 mx-6 lg:h-40  2xl:h-52   mx-auto">
               {alluser.role === "admin" && (
                 <>
-                  <li className="bg-emerald-300 bg- py-2 text-white  hover:text-black font-bold">
-                    <NavLink to={"/dashboard/adminhome"}>Admin Home</NavLink>
+                  <li className="bg-emerald-300 bg- py-2    font-bold">
+                    <NavLink
+                      className={({ isActive }) =>
+                        ` ${
+                          isActive
+                            ? "text-yellow-500 py-[10px] md:px-2 bg-black "
+                            : "text-white hover:text-black"
+                        }`
+                      }
+                      to={"/dashboard/adminhome"}
+                    >
+                      Admin Home
+                    </NavLink>
                   </li>
-                  <li className="bg-emerald-300 py-2 text-white  hover:text-black font-bold">
-                    <NavLink to={"/dashboard/manageuser"}>Manage Users</NavLink>
+                  <li className="bg-emerald-300 py-2  font-bold">
+                    <NavLink
+                      className={({ isActive }) =>
+                        ` ${
+                          isActive
+                            ? "text-yellow-500 py-[10px] md:px-2 bg-black "
+                            : "text-white hover:text-black"
+                        }`
+                      }
+                      to={"/dashboard/manageuser"}
+                    >
+                      Manage Users
+                    </NavLink>
                   </li>
-                  <li className="bg-emerald-300 py-2 text-white  hover:text-black font-bold">
-                    <NavLink to={"/dashboard/managetask"}>Manage Task</NavLink>
+                  <li className="bg-emerald-300 py-2  font-bold">
+                    <NavLink
+                      className={({ isActive }) =>
+                        ` ${
+                          isActive
+                            ? "text-yellow-500 py-[10px] md:px-2 bg-black "
+                            : "text-white hover:text-black"
+                        }`
+                      }
+                      to={"/dashboard/managetask"}
+                    >
+                      Manage Task
+                    </NavLink>
                   </li>
                 </>
               )}
               {alluser.role === "task creator" && (
                 <>
-                  <li className="bg-emerald-300 py-2 text-white  hover:text-black font-bold">
-                    <NavLink to={"/dashboard/creatorhome"}>
+                  <li className="bg-emerald-300 py-2  font-bold">
+                    <NavLink
+                      className={({ isActive }) =>
+                        ` ${
+                          isActive
+                            ? "text-yellow-500 py-[10px] md:px-2 bg-black "
+                            : "text-white hover:text-black"
+                        }`
+                      }
+                      to={"/dashboard/creatorhome"}
+                    >
                       Creator Home
                     </NavLink>
                   </li>
-                  <li className="bg-emerald-300 py-2 text-white  hover:text-black font-bold">
-                    <NavLink to={"/dashboard/addnewtask"}>
+                  <li className="bg-emerald-300 py-2  font-bold">
+                    <NavLink
+                      className={({ isActive }) =>
+                        ` ${
+                          isActive
+                            ? "text-yellow-500 py-[10px] md:px-2 bg-black "
+                            : "text-white hover:text-black"
+                        }`
+                      }
+                      to={"/dashboard/addnewtask"}
+                    >
                       Add new Tasks
                     </NavLink>
                   </li>
-                  <li className="bg-emerald-300 py-2 text-white  hover:text-black font-bold">
-                    <NavLink to={"/dashboard/mytask"}>My Tasks</NavLink>
+                  <li className="bg-emerald-300 py-2  font-bold">
+                    <NavLink
+                      className={({ isActive }) =>
+                        ` ${
+                          isActive
+                            ? "text-yellow-500 py-[10px] md:px-2 bg-black "
+                            : "text-white hover:text-black"
+                        }`
+                      }
+                      to={"/dashboard/mytask"}
+                    >
+                      My Tasks
+                    </NavLink>
                   </li>
-                  <li className="bg-emerald-300 py-2 text-white  hover:text-black font-bold">
-                    <NavLink to={"/dashboard/purchasecoin"}>
+                  <li className="bg-emerald-300 py-2  font-bold">
+                    <NavLink
+                      className={({ isActive }) =>
+                        ` ${
+                          isActive
+                            ? "text-yellow-500 py-[10px] md:px-2 bg-black "
+                            : "text-white hover:text-black"
+                        }`
+                      }
+                      to={"/dashboard/purchasecoin"}
+                    >
                       Purchase Coin
                     </NavLink>
                   </li>
-                  <li className="bg-emerald-300 py-2 text-white  hover:text-black font-bold">
-                    <NavLink to={"/dashboard/paymenthistory"}>
+                  <li className="bg-emerald-300 py-2  font-bold">
+                    <NavLink
+                      className={({ isActive }) =>
+                        ` ${
+                          isActive
+                            ? "text-yellow-500 py-[10px] md:px-2 bg-black "
+                            : "text-white hover:text-black"
+                        }`
+                      }
+                      to={"/dashboard/paymenthistory"}
+                    >
                       Payment history
                     </NavLink>
                   </li>
@@ -107,22 +187,62 @@ const DashboardLayout = () => {
 
               {alluser.role === "worker" && (
                 <>
-                  <li className="bg-emerald-300 py-2 text-white  hover:text-black font-bold">
-                    <NavLink to={"/dashboard/workerhome"}>Worker Home</NavLink>
+                  <li className="bg-emerald-300 py-2  font-bold">
+                    <NavLink
+                      className={({ isActive }) =>
+                        ` ${
+                          isActive
+                            ? "text-yellow-500 py-[10px] md:px-2 bg-black "
+                            : "text-white hover:text-black"
+                        }`
+                      }
+                      to={"/dashboard/workerhome"}
+                    >
+                      Worker Home
+                    </NavLink>
                   </li>
-                  <li className="bg-emerald-300 py-2 text-white   hover:text-black font-bold">
-                    <NavLink to={"/dashboard/tasklist"}>Task List</NavLink>
+                  <li className="bg-emerald-300 py-2  font-bold">
+                    <NavLink
+                      className={({ isActive }) =>
+                        ` ${
+                          isActive
+                            ? "text-yellow-500 py-[10px] md:px-2 bg-black "
+                            : "text-white hover:text-black"
+                        }`
+                      }
+                      to={"/dashboard/tasklist"}
+                    >
+                      Task List
+                    </NavLink>
                   </li>
-                  {/* <li className="bg-emerald-300 py-2 text-white  hover:text-black font-bold">
-                <NavLink to={"/dashboard/taskdetails"}>Task Details</NavLink>
-              </li> */}
-                  <li className="bg-emerald-300 py-2 text-white  hover:text-black font-bold">
-                    <NavLink to={"/dashboard/mysubmission"}>
+
+                  <li className="bg-emerald-300 py-2  font-bold">
+                    <NavLink
+                      className={({ isActive }) =>
+                        ` ${
+                          isActive
+                            ? "text-yellow-500 py-[10px] md:px-2 bg-black "
+                            : "text-white hover:text-black"
+                        }`
+                      }
+                      to={"/dashboard/mysubmission"}
+                    >
                       My Submissions
                     </NavLink>
                   </li>
-                  <li className="bg-emerald-300 py-2 text-white  hover:text-black font-bold">
-                    <NavLink to={"/dashboard/withdraw"}>WithDrawals</NavLink>
+                  <li className="bg-emerald-300 py-2  font-bold">
+                    <NavLink
+                      className={({ isActive }) =>
+                        ` ${
+                          isActive
+                            ? "text-yellow-500 py-[10px] md:px-2 bg-black "
+                            : "text-white hover:text-black"
+                        }`
+                      }
+                      to={"/dashboard/withdraw"}
+                    >
+                      WithDrawals
+                    </NavLink>
                   </li>
                 </>
               )}

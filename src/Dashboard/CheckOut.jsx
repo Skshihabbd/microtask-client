@@ -141,7 +141,7 @@ const CheckOut = ({ info }) => {
         console.log(error.message);
       }
     }
-    setDisable(false);
+
     setProcess(false);
     // my writing code functionality
   };

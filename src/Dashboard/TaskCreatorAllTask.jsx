@@ -8,12 +8,6 @@ import useAxiosSecure from "../Hooks2/useAxiosSecure";
 const TaskCreatorAllTask = ({ info, idx, fetchs }) => {
   const axiosPublic = useAxiosSecure();
 
-  // const
-
-  // console.log(ids)
-  // const {payableAmount
-  // }=ids
-
   const { users } = useAuth();
   console.log(users?.email);
 
@@ -39,6 +33,8 @@ const TaskCreatorAllTask = ({ info, idx, fetchs }) => {
       });
   };
 
+  console.log(info._id);
+  console.log(_id);
   const handleDelete = (ide, data) => {
     console.log(ide);
     console.log(data);

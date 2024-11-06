@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import useAxiosSecure from "../Hooks2/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const TaskcreatorUpdate = () => {
   const data = useLoaderData();
@@ -44,10 +45,8 @@ const TaskcreatorUpdate = () => {
           icon: "success",
           title: "data updated",
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         });
-
-       
       }
     });
   };

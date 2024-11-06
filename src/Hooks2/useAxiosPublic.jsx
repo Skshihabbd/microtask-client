@@ -5,6 +5,7 @@ const axiosPublic = axios.create({
 });
 const useAxiosPublic = () => {
   // https://server-side-nu-sooty.vercel.app
+  // http://localhost:5000
   return axiosPublic;
 };
 

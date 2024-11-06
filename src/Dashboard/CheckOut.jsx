@@ -131,7 +131,7 @@ const CheckOut = ({ info }) => {
             Swal.fire({
               position: "top-end",
               icon: "success",
-              title: "your file has been deleted",
+              title: `successfully you buy${coinConvert} coins `,
               showConfirmButton: false,
               timer: 1500,
             });

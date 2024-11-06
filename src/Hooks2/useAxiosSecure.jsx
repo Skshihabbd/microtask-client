@@ -5,13 +5,14 @@ import useAuth from "../Hooks/useAuth";
 // import { useNavigate } from "react-router-dom";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://server-side-nu-sooty.vercel.app",
 });
 
 const useAxiosSecure = () => {
   const navigate = useNavigate();
   const { logOut } = useAuth();
   // https://server-side-nu-sooty.vercel.app
+  // http://localhost:5000
   axiosSecure.interceptors.request.use(
     function (config) {
       const token = localStorage.getItem("access-token");
